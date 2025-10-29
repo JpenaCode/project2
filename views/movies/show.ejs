@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/nav.css">
+    <title><%= movie.title %></title>
+  </head>
+  <%- include('../partials/nav') %>
+  <body>
+    <!-- Header row -->
+    <header>
+      <h1>
+        <%= movie.title %>
+        <small><%= movie.year %></small>
+      </h1>
+      <p>Rating: <%= movie.rating %>/5</p>
+    </header>
+
+    <!-- Thumbnail -->
+    <section>
+      <img
+        src="<%= movie.showImage || movie.image || '/images/Screenshot-2023-02-13-at-8.01.58-AM.webp' %>"
+        alt="<%= movie.title %> poster"
+        style="max-width:100%;height:auto;"
+      />
+    </section>
+
+    <!-- Meta line -->
+    <p>
+      Director: <%= movie.director %> &nbsp;&nbsp;
+      Genre: <%= movie.genre %>
+    </p>
+
+    <!-- Official summary (static placeholder for now) -->
+    <section>
+      <h3>Summary:</h3>
+      <p>Official summary coming soon.</p>
+      <div>
+        <button type="button">Like</button>
+        <button type="button">Dislike</button>
+        <button type="button">Comment</button>
+      </div>
+    </section>
+
+    <!-- Add Your Review -->
+    <section>
+      <h2>Add Your review:</h2>
+      <form action="/movies/<%= movie._id %>/reviews" method="POST">
+        <div>
+          <label>Name:</label><br />
+          <input type="text" name="author" />
+        </div>
+        <br />
+        <div>
+          <label>Email:</label><br />
+          <input type="email" name="email" />
+        </div>
+        <br />
+        <div>
+          <label>Type Here:</label><br />
+          <textarea name="body" rows="6" cols="60"></textarea>
+        </div>
+        <br />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <!-- User Reviews -->
+    <section>
+      <h2>User Reviews</h2>
+      <% if (typeof reviews !== 'undefined' && reviews.length) { %>
+        <% reviews.forEach(r => { %>
+          <article>
+            <p><strong><%= r.author || 'Anonymous' %></strong></p>
+            <p><%= r.body %></p>
+            <div>
+              <button type="button">Like</button>
+              <button type="button">Dislike</button>
+              <button type="button">Comment</button>
+            </div>
+          </article>
+        <% }) %>
+      <% } else { %>
+        <p>No reviews yet.</p>
+      <% } %>
+    </section>
+  </body>
+</html>

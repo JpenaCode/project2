@@ -1,0 +1,19 @@
+/* global/css/home.css */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px; /* 👈 space below the nav */
+}
+
+
+.movie-card {
+  text-align: center;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+}

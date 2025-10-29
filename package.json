@@ -1,0 +1,29 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/JpenaCode/project2#readme",
+  "bugs": {
+    "url": "https://github.com/JpenaCode/project2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JpenaCode/project2.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.19.2",
+    "morgan": "^1.10.1"
+  }
+}

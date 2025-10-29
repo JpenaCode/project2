@@ -1,0 +1,68 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/nav.css">
+    <title>Movie Addicts</title>
+  </head>
+  <body>
+    <header>
+      <%- include('../partials/nav') %>
+      <h1>Search By:</h1>
+    <hr />
+    </header>
+
+    <!-- NAV placeholder (to fill later) -->
+    <nav> <!-- empty on purpose --> </nav>
+
+    <main>
+      <!-- Genre -->
+      <section>
+        <h2>Genre</h2>
+        <ul>
+          <li><a href="/movies/genre/Action">Action</a></li>
+          <li><a href="/movies/genre/Drama">Drama</a></li>
+          <li><a href="/movies/genre/Horror">Horror</a></li>
+          <li><a href="/movies/genre/Comedy">Comedy</a></li>
+        </ul>
+      </section>
+
+      <!-- Director -->
+      <section>
+        <h2>Director</h2>
+        <ul>
+          <li><a href="/movies/director/Steven%20Spielberg">Steven Spielberg</a></li>
+          <li><a href="/movies/director/Quentin%20Tarantino">Quentin Tarantino</a></li>
+          <li><a href="/movies/director/James%20Cameron">James Cameron</a></li>
+          <li><a href="/movies/director/Judd%20Apatow">Judd Apatow</a></li>
+        </ul>
+      </section>
+
+      <!-- Year -->
+      <section>
+        <h2>Year</h2>
+        <ul>
+          <li><a href="/movies/year/2020s">2020's</a></li>
+          <li><a href="/movies/year/2010s">2010's</a></li>
+          <li><a href="/movies/year/2000s">2000's</a></li>
+          <li><a href="/movies/year/1990s">1990's</a></li>
+        </ul>
+      </section>
+
+      <!-- Rating -->
+      <section>
+        <h2>Rating</h2>
+        <ul>
+          <li><a href="/movies/rating/9">9/10</a></li>
+          <li><a href="/movies/rating/8">8/10</a></li>
+          <li><a href="/movies/rating/7">7/10</a></li>
+          <li><a href="/movies/rating/6">6/10</a></li>
+          <li><a href="/movies/rating/5">5/10</a></li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
+
