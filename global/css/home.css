@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  margin-top: 30px; /* 👈 space below the nav */
+  margin-top: 30px;
 }
 
 

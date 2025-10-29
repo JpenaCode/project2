@@ -18,7 +18,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));
-app.use(express.static("global")); // your static folder
+app.use(express.static("global")); 
 
 // 6) DB connect + logs
 mongoose.connect(process.env.MONGODB_URI);
@@ -32,43 +32,43 @@ const Review = require("./models/review.js");
 
 // 8) Routes
 
-// 🏠 Home page — lists all movies (newest first)
+// Home page 
 app.get("/", async (req, res) => {
   try {
     const movies = await Movie.find().sort({ _id: -1 });
-    res.render("home", { movies }); // ✅ render home.ejs, not index
+    res.render("home", { movies }); // render home.ejs
   } catch (err) {
     console.error(err);
     res.status(500).send("Error loading home page");
   }
 });
 
-// 🎬 Movies index page — optional separate list view
+// Movies Index 
 app.get("/movies", async (req, res) => {
   try {
     const movies = await Movie.find();
-    res.render("movies/index", { movies }); // ✅ still fine (movies/index.ejs)
+    res.render("movies/index", { movies }); // movies/index.ejs
   } catch (err) {
     console.error(err);
     res.status(500).send("Error loading movies page");
   }
 });
 
-// 🎥 Show one movie + its reviews
+// Show.ejs
 app.get("/movies/:title", async (req, res) => {
   try {
     const movie = await Movie.findOne({ title: req.params.title });
     if (!movie) return res.status(404).send("Movie not found");
 
     const reviews = await Review.find({ movie: movie._id }).sort({ createdAt: -1 });
-    res.render("movies/show", { movie, reviews }); // ✅ show.ejs exists here
+    res.render("movies/show", { movie, reviews }); // show.ejs 
   } catch (err) {
     console.error(err);
     res.status(500).send("Error loading movie page");
   }
 });
 
-// ✏️ Create a new review for a movie
+// Create a new review 
 app.post("/movies/:id/reviews", async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
@@ -89,7 +89,7 @@ app.post("/movies/:id/reviews", async (req, res) => {
   }
 });
 
-// GET /movies/genre/:genre  → list movies in that genre
+// GET /movies/genre/:genre
 app.get('/movies/genre/:genre', async (req, res) => {
   const genre = req.params.genre;
   const movies = await Movie.find({ genre });
@@ -97,25 +97,25 @@ app.get('/movies/genre/:genre', async (req, res) => {
 });
 
 app.get('/movies/director/:name', async (req, res) => {
-  const name = req.params.name; // Express decodes %20 automatically
+  const name = req.params.name; 
   const movies = await Movie.find({ director: name });
   res.render('home', { movies });
 });
 
-// GET /movies/year/2010s → years 2010–2019
-app.get('/movies/year/:bucket', async (req, res) => {
-  const bucket = req.params.bucket;            // e.g., "2010s"
-  const m = bucket.match(/^(\d{4})s$/);        // extract "2010"
-  if (!m) return res.status(400).send('Invalid year bucket');
+// GET /movies/years
+// app.get('/movies/year/:bucket', async (req, res) => {
+//   const bucket = req.params.bucket;            
+//   const m = bucket.match(/^(\d{4})s$/);        
+//   if (!m) return res.status(400).send('Invalid year bucket');
 
-  const start = parseInt(m[1], 10);
-  const end = start + 9;
+//   const start = parseInt(m[1], 10);
+//   const end = start + 9;
 
-  const movies = await Movie.find({ year: { $gte: start, $lte: end } });
-  res.render('home', { movies });
-});
+//   const movies = await Movie.find({ year: { $gte: start, $lte: end } });
+//   res.render('home', { movies });
+// });
 
-// GET /movies/rating/:rating → movies with that rating
+// GET /movies/rating/:rating 
 app.get('/movies/rating/:rating', async (req, res) => {
   const rating = parseFloat(req.params.rating);
   const movies = await Movie.find({ rating });

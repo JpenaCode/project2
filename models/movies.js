@@ -8,10 +8,10 @@ const movieSchema = new mongoose.Schema({
   year: Number,
   genre: String,
   rating: Number,
-  image: String,      // used for home page thumbnail
-  showImage: String,  // used for the review page (show.ejs)
+  image: String,      
+  showImage: String,  
 });
 
-const Movie = mongoose.model("Movie", movieSchema); // create model
+const Movie = mongoose.model("Movie", movieSchema); 
 
 module.exports = Movie;

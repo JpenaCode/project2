@@ -20,7 +20,7 @@
         <% movies.forEach(movie => { %>
           <div class="movie-card">
             <a href="/movies/<%= encodeURIComponent(movie.title) %>">
-              <!-- Option B: pull image from MongoDB, fallback if missing -->
+              
               <img
                 src="<%= movie.image || '/images/Screenshot-2023-02-13-at-8.01.58-AM.webp' %>"
                 alt="<%= movie.title %> poster"
