@@ -6,12 +6,14 @@ const movieSchema = new mongoose.Schema({
   title: String,
   director: String,
   year: Number,
+  rating: String,
   genre: String,
-  rating: Number,
-  image: String,      
-  showImage: String,  
+  addToFavorites: Boolean,
+
 });
 
-const Movie = mongoose.model("Movie", movieSchema); 
+const Movie = mongoose.model("Movie", movieSchema); // create model
+
+// models/movies.js
 
 module.exports = Movie;

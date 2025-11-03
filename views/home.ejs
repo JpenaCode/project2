@@ -1,39 +1,20 @@
+<!-- views/index.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <title>Movie Addicts</title>
+    <title>Movies App</title>
   </head>
   <body>
-    <header>
-      <h1>Movie Addicts</h1>
-      <p>True Honest Reviews of your favorite movies.</p>
-      <hr />
-      <%- include('partials/nav') %>
-    </header>
+    <h1>Favorite Movies</h1>
+    <p>An app for collecting your favorite Movies</p>
 
-    <% if (movies && movies.length) { %>
-      <div class="movie-grid">
-        <% movies.forEach(movie => { %>
-          <div class="movie-card">
-            <a href="/movies/<%= encodeURIComponent(movie.title) %>">
-              
-              <img
-                src="<%= movie.image || '/images/Screenshot-2023-02-13-at-8.01.58-AM.webp' %>"
-                alt="<%= movie.title %> poster"
-                class="thumbnail">
-            </a>
-            <h3><%= movie.title %></h3>
-            <p>Rating: <%= movie.rating %>/5</p>
-          </div>
-        <% }) %>
-      </div>
-    <% } else { %>
-      <p>No movies found.</p>
-    <% } %>
+    <!-- views/index.ejs -->
+  <a href="/movies">Browse Movies</a>
+
   </body>
 </html>
+
 
